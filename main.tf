@@ -10,7 +10,7 @@ locals {
 }
 
 resource "google_secret_manager_secret" "adapter_secret" {
-  for_each = { for index, record in local.secret_list : index => record }
+  for_each = tomap({ for index, record in local.secret_list : index => record })
 
   provider  = google.secure
   secret_id = "prod-app-base-060623-${each.value.project}-${each.value.secret}-${terraform.workspace}"
