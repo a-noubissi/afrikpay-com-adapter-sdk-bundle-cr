@@ -1,4 +1,10 @@
 variable "adapter_secret" {
   description = "name secrets by adapters"
-  type        = list(string)
+  type        = string
+  nullable = false
+}
+
+variable "secret_value" {
+  type = string
+  nullable = false
 }
