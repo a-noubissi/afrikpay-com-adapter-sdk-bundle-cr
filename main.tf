@@ -11,7 +11,7 @@ resource "google_secret_manager_secret" "adapter_secret" {
 resource "google_secret_manager_secret_version" "secret-version" {
   provider  = google.secure
   
-  count = (terraform.workspace == "prod" || var.secret_value == "NULL") ? 0 : 1
+  count = ( var.secret_value == "NULL") ? 0 : 1
   
   secret = google_secret_manager_secret.adapter_secret.id
 
